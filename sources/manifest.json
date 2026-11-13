@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "path": "sources/recording.edf",
+      "bytes": 1164,
+      "sha256": "1611a655753fa580315ff2d34f19b6e8d250782d3a4879e43221745cc14c5463"
+    },
+    {
+      "path": "sources/expected-samples.json",
+      "bytes": 238,
+      "sha256": "2f135f861ade1e31289fdb9bceddff2b32addd5fa80ea83defdbf15542f78ed5"
+    }
+  ]
+}

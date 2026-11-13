@@ -1,0 +1,24 @@
+[
+  {
+    "record": 0,
+    "onset": "0",
+    "channelA": [
+      1,
+      2
+    ],
+    "channelB": [
+      3
+    ]
+  },
+  {
+    "record": 1,
+    "onset": "3",
+    "channelA": [
+      4,
+      5
+    ],
+    "channelB": [
+      6
+    ]
+  }
+]

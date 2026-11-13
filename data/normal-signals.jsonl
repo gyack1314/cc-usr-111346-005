@@ -1,0 +1,3 @@
+{"id": "s1", "label": "channelA", "samples_per_record": 2}
+{"id": "s2", "label": "channelB", "samples_per_record": 1}
+{"id": "s3", "label": "EDF Annotations", "samples_per_record": 32}

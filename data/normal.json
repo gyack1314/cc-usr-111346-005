@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "tables": {
+    "signals": {
+      "file": "normal-signals.jsonl",
+      "sha256": "c8951fd2648f4adb9b3ae8dc4399ca23167d92587a708617e0d7bc3402af06ad",
+      "bytes": 185,
+      "rows": 3,
+      "fields": [
+        "id",
+        "label",
+        "samples_per_record"
+      ]
+    },
+    "windows": {
+      "file": "normal-windows.jsonl",
+      "sha256": "eeca6142afafedd79fe8869593500275df0519c5bbe2ec83da9d6b605a78f76e",
+      "bytes": 40,
+      "rows": 1,
+      "fields": [
+        "id",
+        "start",
+        "stop"
+      ]
+    }
+  }
+}
