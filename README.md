@@ -19,3 +19,28 @@ python -m edf_data.cli data/boundary.json
 docker build -t edf-data .
 docker run --rm edf-data
 ```
+
+## EDF+采集（EDF+C/EDF+D）
+
+`edf_data/edfplus/` 在不改动既有清单校验的前提下，增加EDF+文件读取：
+按原通道与真实记录起点交付样本和注释，不诊断、不重采样。固定头与逐信号
+头按ASCII定宽字段解析，信号数据为小端有符号16位，各通道可有不同
+samples-per-record；物理值按digital/physical min-max做精确有理
+（Fraction）映射并保留原digital值，单位、transducer、prefilter作为原
+元数据。注释信号按字节解析TAL，EDF+C强制连续、EDF+D允许空档，重复或
+重叠起点直接失败；结构索引与样本已验证范围分开声明，时间窗按记录起点
+seek切片，读取后段窗口不解码前面的生理样本。设计细节见
+[docs/edfplus-design.md](docs/edfplus-design.md)。
+
+```sh
+# 结构索引（记录起点、空档、截断尾、注释通道），不解码生理样本
+python -m edf_data.edfplus <文件> inspect
+# 半开时间窗[start,stop)采集：切片计划、空档、注释、有界样本流
+python -m edf_data.edfplus <文件> acquire 2 4 --max-samples 100
+# 端到端核对：两种采样率+断档、多文本/负起点、未知记录数、损坏TAL拒绝
+python -I scripts/edfplus_demo.py
+```
+
+注：本环境的 `python -I` 不把cwd加入sys.path，模块方式在普通模式下
+直接可用；隔离模式下运行测试用 `python -I -m unittest`（发现器自行
+注入目录），CLI可用演示脚本中的显式sys.path引导方式。
